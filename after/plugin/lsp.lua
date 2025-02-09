@@ -6,7 +6,7 @@ vim.opt.signcolumn = 'yes'
 -- Import mason and mason-lspconfig
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = {'ts_ls', 'lua_ls', 'eslint'}, -- Ensure the TypeScript Language Server is installed
+  ensure_installed = {'ts_ls', 'lua_ls', 'eslint', 'html'}, -- Ensure the TypeScript Language Server is installed
 })
 
 -- Import lsp-zero module
@@ -30,11 +30,3 @@ require('lspconfig').ts_ls.setup{
   end,
 }
 
--- Configure the TypeScript server specifically
-require('lspconfig').ts_ls.setup{
-  -- Add any ts_ls specific configurations here
-  on_attach = function(client, bufnr)
-    -- Example: Disable ts_ls's document formatting to use another formatter
-    client.server_capabilities.document_formatting = false
-  end,
-}
